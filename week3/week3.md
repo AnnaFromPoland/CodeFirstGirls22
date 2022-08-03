@@ -132,6 +132,6 @@ Using image search (didn’t read the article and haven’t referred to it).
 
 And here’s a timeline visualisation, from the beginning to end of the project (the above only shows 1 cycle of the agile side, while it shows the entire waterfall approach):
 
-![Agile vs Waterfall Project Timeline](timelines-comparison.jpg)
+![Agile vs Waterfall Project Timeline](timelines-comparison.png)
 
 While I’m aware books may be written about both agile and waterfall, I hope this answer is sufficiently detailed for the purpose of answering these questions. I also have a personal bias, as agile seems to me far better suited for IT development needs than waterfall, and I’ve no ambitions to build buildings or such projects, and also I’ve already went and attained the Scrum certificates, so perhaps that’s also why I think agile is just better fit for IT industry.
