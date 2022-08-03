@@ -33,7 +33,7 @@ Overriding is great with inheritance – we don’t need separate “make_sound(
 
 Overloading is also for code reusing. I’ve seen a great example somewhere explaining this with an adding function “addition(var1, var2)”. Overloading allows us to change the number of parameters while keeping the function’s core idea/function, so if we suddenly have more than 2 numbers to add, we can use this same addition(var1, var2) function, just with a different signature, adding more parameters to it – addition(var1, var2, var3) - so we don't have to write a new function or alter the existing one (and then alter it back when we have 2 parameters again). The method name remains the same, just the signature differs. 
 
-![alt text](overloading-overriding.png)
+![Overloading versus Overriding](overloading-overriding.png)
 
 Source for the overloading vs overriding part of the answer: [Educative.io](https://www.educative.io/answers/overloading-vs-overriding)
 Source for the visual example: [JavaTPoint](https://www.javatpoint.com/method-overloading-vs-method-overriding-in-java)
@@ -52,7 +52,7 @@ In Java there’s this concept of the abstract class & interface, which have a h
 
 For example, let’s imagine we want to create an object “a pilot” (like a driver of an airplane). Instead of creating a class with the traits our “pilot” object should have, we create kind of a template for “pilot” classes. Why can this be favourable? When we want to have multiple types of the pilot object, each with their traits (defined in class) but also sharing a significant background (globally applicable traits). So our architecture could look something like:
 
-![alt text](image.jpg)
+![The Making of a Pilot - Example of Data Hiding](abstracts.png)
 
 The reason for such delegation is for data safety, not to disclose too much of our data architecture to users/onlookers in our publicly available code, and I also think it’s cleaner, more organised. This is a good way of also making sure each element of x type necessarily employs all the traits we’ve designed this group of elements to contain/use – abstract methods must always be implemented, all of them, and an interface contains only such. An abstract class can have both abstract and non abstract methods.
 
@@ -69,10 +69,12 @@ Inheritance is useful for when we know we will need a lot of objects, we write s
 
 Other names: parent class is called a super class, and in some languages there is the super() method to access the parent’s class attributes. It can also be called a “base” class. A child class can be analogically referred to as the subclass.
 
-A quick example: while we could have inheritance from “animal” to class to “cat” and “dog”, extending cat and/or dog classes by accessing animal properties, it wouldn’t be very useful for us to extend a class “bird” by a “car” class, as “bird” shares probably no attributes with “car” that we could reuse in a “bird” class.
-So if there are some shared traits, like for example if animal has 4 legs, fur, a tail to wag, then all these traits can be extended and used by both cat and dog and thus it makes sense for us to extend dog and cat by “animal” super class.
+![Animal Inheritance](inheritance-example.png)
 
-(Of course, still only abstract objects need to be inherited, so if the "car" class has no abstracts which must always be implemented, technically we could create a "bird" class extending an "car" class without the need of our "bird" to have car parts and features implemented on it and the code would run without errors, but it is useless, serves no purpose and thus just results in unnecessarily cluttered code.)
+A quick example which is easy to understand because it stems from real life - animals. We have an "animals" class (I didn't write any trait there which is inherited, because it was difficult to find one common to all the lower examples. "Live being" also include bacteria which aren't animals. Some bacteria breathe as well. So forgive me please for not providing 1 trait which all animals share and thus inherit from "animals" super class), and classes "vertebrae" and "invertebrae" inherit animal traits freom the "animal" super class - both vertebrae and invertebrae are animals and inherit from animals class, but they two are different from each other, one is a class of animals who have a spine, and the other are animals without a spine. The "vetrebrae" is a super class for animal types "fish", "birds" and "mammals" - all of these 3 are both vertebraes and animals, and inherit traits from both these parent classes. However, they three are different from eachother, each of them has traits unique only to them and absent in other children classes of vertebrae parent class - fish live underwater and can breathe from water (only), birds can fly in the air, fish and mammals can't do that (jumping doesn't count), and mammals too are different from fish and birds and don't have traits of fish and birds. So while mammals and fish both inherit the "has spine" attribute from the "vertebrae" class, they are separate classes from each other with non repeatable traits.
+Inheritance goes top down, so any traits fish may have do not affect the parent "vertebrae" class. Subclass can access and use (inherit) super class' attributes, but super class can't access and use subclass' attributes. I hope this example and my explanation was clear :)
+
+(Of course, still only abstract objects need to be inherited, so if the "jellyfish" class has no abstracts which must always be implemented, technically we could create a "bird" class extending a "jellyfish" class without the need of our "bird" to necessarily have jellyfish parts and features implemented on it and the code should run without errors, but such inheritance would be useless, serveing no purpose whatsoever and thus violate the purpose of reusability (why we're having/using inheritance to begin with) and would just result in unnecessarily cluttered code (violating clean code best practices).)
 
 ## 5. What is encapsulation?
 
