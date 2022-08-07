@@ -26,11 +26,13 @@ I’d still use CSS for styling, and from what I saw, it’s used alongside with
 I think JSX is another benefit of using React, as it allows to inject dynamic tags into HTML like in the below example (in CFG explanation it was actually said React is JSX, so HTML+JS) – vanilla HTML wouldn’t understand this code:
 
 ![JSX Beneficial Use Example](jsx.png)
-[Source of the example](https://reactjs.org/docs/introducing-jsx.html) -the part about JSX being used in React I remembered from class.
+
+[Source of the example](https://reactjs.org/docs/introducing-jsx.html) - the part about JSX being used in React I remembered from class.
 
 I have used this featuer several times in referencing dynamic elements in the simple notes app I’ve written in React just to learn via practice. I think this below is another good example of such code, I don’t recall links working this way in vanilla HTML – if I remember correctly they had to be specific locations, either a path (to a folder, and then it reads the index.html of it or whatever is set as the index) or a specific page (like “page.html” or some file or anything, but I don’t recall it using dynamic variables in links – at least not in HTML 2.0, I can’t be sure about 5.0 as I haven’t fully updated my knowledge as there was yet no need to).
 
 ![Dynamic Links](notes-example.png)
+
 The link contains a dynamic ID as a part of the link actual.
 
 This is the main feature of React, that it’s component based, and we rotate these components to make up page views from their amalgamate. I think I’ve also answered the **“what’s the benefit of using React”** and **“why choose React over HTML and CSS stack”** questions – it does the same work in a faster and more lightweight way.
@@ -39,9 +41,11 @@ This is the main feature of React, that it’s component based, and we rotate th
 The other big plus of React is its virtual DOM feature. A DOM is a “document object model”, which is a model that creates object from our document. It is used in several languages I read, for sure in HTML, so I’ll stick to this example. It makes a tree “map” of HTML elements, they become nodes, and this is meant as a way to facilitate (simplify, hasten) performing operations on these elements (I understand that it achieves this by listing the elements and actually turning them into workable objects, so a list of workable objects – something like indexing in SQL databases, so we could address the elements which interest us faster thanks to this “table of contents” rather than traversing through all the elements to find all the objects we want to interact with). 
 
 A sample HTML page structure:
+
 ![Sample HTML Page Structure](page-structure.png)
 
 And this is the DOM representation of this HTML page structure:
+
 ![Real DOM of the HTML Page](real-dom.png)
 
 This DOM is however described as slow and bulky, an issue which is addressed by the React’s (and Vue’s) virtual DOM feature, which is an abstract DOM with each node from the real DOM represented (in the virtual DOM, each real DOM node has its virtual DOM counterpart) – I might be wrong but from the explanations I’ve read it seems like an index of the DOM “index”, so less bulky means we can find the nodes we want faster. Then after the virtual DOM received some changes/updates, it compares the current state of its virtual DOM nodes with the real DOM nodes’ state (diffing – it understands which virtual DOM components were updated), i.e. talks with the “real” DOM and updates (as 1 bulk update – a lot of changes can be made in the virtual DOM, but they get batched into 1 bulk, 1 update applied to the real DOM – which positively influences the speed) only the components which need to be updated, without the need to update the whole DOM or reload the whole page’s content. 
@@ -56,6 +60,7 @@ Reading materials perused before formulating this answer: [DOM](https://eloquent
 **Props** are properties, attributes passed for React to work with. It is an object argument with data describing a property (one property) which can be used in both objects (const elements) and functions as well as classes. This way we can pass this property further, reference it, and this property can be dynamic, I’ve used ID of a singular note as a prop – the prop ID was an attribute of a note object, which allowed me to differentiate between several notes in the app and call only 1 of them, which had a certain ID. The calling function was 1 function, just the ID prop was dynamically changed.
 
 ![Props Example](props-example.png)
+
 This example comes from the [React Official Website](https://reactjs.org/docs/components-and-props.html)
 
 I also found this link useful when researching this topic when I was making the “learning react” app: [React Props](https://dmitripavlutin.com/react-props) 
@@ -63,7 +68,8 @@ I also found this link useful when researching this topic when I was making the 
 The **state** is different than props by that it’s not passed between React components, states pertain to only 1 component – this component manages the state object argument internally. State is also a kind of a property of a component, but unlike props, state is mutable and meant to track changes to the object. It has the setState() function which updates the state of the object and re-renders it accordingly as well especially for that purpose. I don’t imagine I’d find any better explanation than the one on the React website, so this time I’ll just use a quotation: “setState() schedules an update to a component’s state object. When state changes, the component responds by re-rendering” (from React's Official Page). An example of this which I found online uses clicks of a button to showcase the usefulness of state, which to me makes sense:
 
 ![State](state-example.png)
-It was in [an article](https://lucybain.com/blog/2016/react-state-vs-pros) linked from the React Official Website.
+
+This example was in [an article](https://lucybain.com/blog/2016/react-state-vs-pros) linked from the React Official Website.
 
 The **differences in use between props and state** – they are both attributes of React components, but one is for a changing attribute (state, it can be mutated), so if the component’s attribute should be updated / updatable, state should be used, and the other one – props – is static, as in it doesn’t change (props, can be set by the super class when they are created, but that’s it, they’re not mutable, there’s no function to access and overwrite/update them).
 
@@ -156,13 +162,14 @@ Its possible minuses are that it’s too new and thus underdeveloped, too lightw
 ##### Comparison – Angular vs React & Vue – 2way & 1way Data Binding:
 Important side note about Angular & React: it is often mentioned that “Angular employs 2 way data binding” and “React employs 1 way data binding”, which means that in 2way binding if the UI is changed then the model state changes automatically, and the reverse is also true, while in 1way flow changing the UI elements is possible only after changing the model state. I did read that Angular’s way leads to less errors but in practice in code I don’t yet understand what this means. It was also mentioned clearly that 2way binding of Angular necessitates “dirty checking” and makes the flow slower. 
 I also read about Flux in React as the means for Facebook to implement the 1-directional approach:
+
 ![1-way Data Binding React Data Flow](flux-data-flow.png)
 
 ##### Comparison – in a table, side by side detailed comparison view:
 
 ![Angular vs React.js vs Vue.js Comparison](comparison.PNG)
 
-Reading materials perused before formulating this answer: [React.js vs Angulrar 5 vs Vue.js in 2018](https://medium.com/techmagic/reactjs-vs-angular5-vs-vue-js-what-to-choose-in-2018-b91e028fa91d) ; [React.js vs Angular](https://appinventiv.com/blog/react-vs-angular) ; [Differences Between React and Angular](https://dzone.com/articles/differences-between-react-and-angular) ; [React vs Angular](https://x-team.com/blog/react-vs-angular) ; [Vue.js](https://vuejs.org) ; [Why Use Vue.js](https://www.trio.dev/blog/why-use-vue-js) ; [Vue.js Comparison with Angular and React](https://www.valuecoders.com/blog/technology-and-apps/vue-js-comparison-angular-react) ; [React vs Angular.js](https://rubygarage.org/blog/react-vs-angularjs) ; [Angular vs React Comparison](https://brainhub.eu/library/angular-vs-react-comparison) ; [React vs Angular](https://www.sitepoint.com/react-vs-angular) ; [React vs Angular vs Vue Complete Comparison](https://dzone.com/articles/react-vs-angular-vs-vue-the-complete-comparison-to) ; [Angular vs React Side by Side Comparison](https://www.pluralsight.com/guides/angular-vs-react-a-side-by-side-comparison) ; [React vs Angular](https://programmingwithmosh.com/react/react-vs-angular) ; [React.js vs Angular.js](https://www.rishabhsoft.com/blog/reactjs-vs-angularjs) ; [React vs Vue](https://hackr.io/blog/react-vs-vue)
+Reading materials perused before formulating this answer: [React.js vs Angulrar 5 vs Vue.js in 2018](https://medium.com/techmagic/reactjs-vs-angular5-vs-vue-js-what-to-choose-in-2018-b91e028fa91d) ; [React.js vs Angular](https://appinventiv.com/blog/react-vs-angular) ; [Differences Between React and Angular]( https://dzone.com/articles/differences-between-react-and-angular) ; [React vs Angular](https://x-team.com/blog/react-vs-angular) ; [Vue.js](https://vuejs.org) ; [Why Use Vue.js](https://www.trio.dev/blog/why-use-vue-js) ; [Vue.js Comparison with Angular and React](https://www.valuecoders.com/blog/technology-and-apps/vue-js-comparison-angular-react) ; [React vs Angular.js](https://rubygarage.org/blog/react-vs-angularjs) ; [Angular vs React Comparison](https://brainhub.eu/library/angular-vs-react-comparison) ; [React vs Angular](https://www.sitepoint.com/react-vs-angular) ; [React vs Angular vs Vue Complete Comparison](https://dzone.com/articles/react-vs-angular-vs-vue-the-complete-comparison-to) ; [Angular vs React Side by Side Comparison](https://www.pluralsight.com/guides/angular-vs-react-a-side-by-side-comparison) ; [React vs Angular](https://programmingwithmosh.com/react/react-vs-angular) ; [React.js vs Angular.js](https://www.rishabhsoft.com/blog/reactjs-vs-angularjs) ; [React vs Vue](https://hackr.io/blog/react-vs-vue )
 
 ### 6. Please describe Redux in as much detail – especially consider: why would someone use it? What is it? What's the benefit of using it? Are there any potential drawbacks to using it? How can it be added to a project? What is dispatch, provider, actions, etc? (15 marks)
 
