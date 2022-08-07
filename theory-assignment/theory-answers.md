@@ -25,12 +25,12 @@ I’d still use CSS for styling, and from what I saw, it’s used alongside with
 
 I think JSX is another benefit of using React, as it allows to inject dynamic tags into HTML like in the below example (in CFG explanation it was actually said React is JSX, so HTML+JS) – vanilla HTML wouldn’t understand this code:
 
-![JSX Beneficial Use Example](/jsx.png)
+![JSX Beneficial Use Example](jsx.png)
 [Source of the example](https://reactjs.org/docs/introducing-jsx.html) -the part about JSX being used in React I remembered from class.
 
 I have used this featuer several times in referencing dynamic elements in the simple notes app I’ve written in React just to learn via practice. I think this below is another good example of such code, I don’t recall links working this way in vanilla HTML – if I remember correctly they had to be specific locations, either a path (to a folder, and then it reads the index.html of it or whatever is set as the index) or a specific page (like “page.html” or some file or anything, but I don’t recall it using dynamic variables in links – at least not in HTML 2.0, I can’t be sure about 5.0 as I haven’t fully updated my knowledge as there was yet no need to).
 
-![Dynamic Links](/notes-example.png)
+![Dynamic Links](notes-example.png)
 The link contains a dynamic ID as a part of the link actual.
 
 This is the main feature of React, that it’s component based, and we rotate these components to make up page views from their amalgamate. I think I’ve also answered the **“what’s the benefit of using React”** and **“why choose React over HTML and CSS stack”** questions – it does the same work in a faster and more lightweight way.
@@ -39,10 +39,10 @@ This is the main feature of React, that it’s component based, and we rotate th
 The other big plus of React is its virtual DOM feature. A DOM is a “document object model”, which is a model that creates object from our document. It is used in several languages I read, for sure in HTML, so I’ll stick to this example. It makes a tree “map” of HTML elements, they become nodes, and this is meant as a way to facilitate (simplify, hasten) performing operations on these elements (I understand that it achieves this by listing the elements and actually turning them into workable objects, so a list of workable objects – something like indexing in SQL databases, so we could address the elements which interest us faster thanks to this “table of contents” rather than traversing through all the elements to find all the objects we want to interact with). 
 
 A sample HTML page structure:
-![Sample HTML Page Structure](/page-structure.png)
+![Sample HTML Page Structure](page-structure.png)
 
 And this is the DOM representation of this HTML page structure:
-![Real DOM of the HTML Page](/real-dom.png)
+![Real DOM of the HTML Page](real-dom.png)
 
 This DOM is however described as slow and bulky, an issue which is addressed by the React’s (and Vue’s) virtual DOM feature, which is an abstract DOM with each node from the real DOM represented (in the virtual DOM, each real DOM node has its virtual DOM counterpart) – I might be wrong but from the explanations I’ve read it seems like an index of the DOM “index”, so less bulky means we can find the nodes we want faster. Then after the virtual DOM received some changes/updates, it compares the current state of its virtual DOM nodes with the real DOM nodes’ state (diffing – it understands which virtual DOM components were updated), i.e. talks with the “real” DOM and updates (as 1 bulk update – a lot of changes can be made in the virtual DOM, but they get batched into 1 bulk, 1 update applied to the real DOM – which positively influences the speed) only the components which need to be updated, without the need to update the whole DOM or reload the whole page’s content. 
 
@@ -55,14 +55,14 @@ Reading materials perused before formulating this answer: [DOM](https://eloquent
 ### 2. What are Props? What is State? What is the difference between them? (10 marks)
 **Props** are properties, attributes passed for React to work with. It is an object argument with data describing a property (one property) which can be used in both objects (const elements) and functions as well as classes. This way we can pass this property further, reference it, and this property can be dynamic, I’ve used ID of a singular note as a prop – the prop ID was an attribute of a note object, which allowed me to differentiate between several notes in the app and call only 1 of them, which had a certain ID. The calling function was 1 function, just the ID prop was dynamically changed.
 
-![Props Example](/props-example.png)
+![Props Example](props-example.png)
 This example comes from the [React Official Website](https://reactjs.org/docs/components-and-props.html)
 
 I also found this link useful when researching this topic when I was making the “learning react” app: [React Props](https://dmitripavlutin.com/react-props) 
 
 The **state** is different than props by that it’s not passed between React components, states pertain to only 1 component – this component manages the state object argument internally. State is also a kind of a property of a component, but unlike props, state is mutable and meant to track changes to the object. It has the setState() function which updates the state of the object and re-renders it accordingly as well especially for that purpose. I don’t imagine I’d find any better explanation than the one on the React website, so this time I’ll just use a quotation: “setState() schedules an update to a component’s state object. When state changes, the component responds by re-rendering” (from React's Official Page). An example of this which I found online uses clicks of a button to showcase the usefulness of state, which to me makes sense:
 
-![State](/state-example.png)
+![State](state-example.png)
 It was in [an article](https://lucybain.com/blog/2016/react-state-vs-pros) linked from the React Official Website.
 
 The **differences in use between props and state** – they are both attributes of React components, but one is for a changing attribute (state, it can be mutated), so if the component’s attribute should be updated / updatable, state should be used, and the other one – props – is static, as in it doesn’t change (props, can be set by the super class when they are created, but that’s it, they’re not mutable, there’s no function to access and overwrite/update them).
@@ -80,7 +80,7 @@ One more feature these hooks provide seems to be allowing the function based com
 Hooks can’t be used in classes and lifecycle methods can’t be used in functional components. It’s possible to use useEffect() to achieve the same effect as with componentDidMount(). It seems that the hooks are more flexible than the lifecycle methods and allow for user customisation, as in you can make your own hook if needed, and lifecycle methods seem to lack this capability.
 I understand on the face value of this information that hooks simplified life for the React developers, and I can use hooks, but I’m not very big on functional programming and have been mostly studying OOP so while I felt immediately comfortable with React’s class based components, I had to separately study the function based ones and I’m not so confident here yet, can use it, but I don’t feel like I have a solid understanding of this topic. For me the class based components were easier and more understandable, very likely that because of my “learning heritage” of Java and other OOPs. Maybe I should be grateful for React for broadening my programming horizons :) 
 
-Reading materials perused before formulating this answer:  [Hooks Overview](https://reactjs.org/docs/hooks-overview.html) ; [This Comment from React.js Reddit](https://www.reddit.com/r/reactjs/comments/g5zxkp/comment/fo6pxl2/) ; [Hooks Fundamentals](https://www.freecodecamp.org/news/react-hooks-fundamentals) ; [Lifecycle Methods](https://programmingwithmosh.com/javascript/react-lifecycle-methods) ; [What's a Component Lifecycle](https://blog.logrocket.com/react-lifecycle-methods-tutorial-examples/#whatisthereactcomponentlifecycle) ; [This Comment from React.js Reddit on Lifecycle Methods](https://www.reddit.com/r/reactjs/comments/d4r6fu/react_lifecycle_methods) ; [Lifecycle Methods and Hooks](https://www.opcito.com/blogs/lifecycle-methods-and-hooks-in-react) ; [Lifecycle Methods and Hooks Suspense](https://dmitripavlutin.com/react-fetch-lifecycle-methods-hooks-suspense) ; [Hooks Fundamentals](https://www.freecodecamp.org/news/react-hooks-fundamentals) ; [Component Lifecycle Methods vs Hooks](https://tsh.io/blog/react-component-lifecycle-methods-vs-hooks) ; [Replacing Lifecycle Methods with Hooks](https://blog.bitsrc.io/replacing-react-lifecycle-methods-with-hooks-a-comprehensive-guide-dfd5cbe1f274)
+Reading materials perused before formulating this answer:  [Hooks Overview](https://reactjs.org/docs/hooks-overview.html) ; [This Comment from React.js Reddit](https://www.reddit.com/r/reactjs/comments/g5zxkp/comment/fo6pxl2) ; [Hooks Fundamentals](https://www.freecodecamp.org/news/react-hooks-fundamentals) ; [Lifecycle Methods](https://programmingwithmosh.com/javascript/react-lifecycle-methods) ; [What's a Component Lifecycle](https://blog.logrocket.com/react-lifecycle-methods-tutorial-examples/#whatisthereactcomponentlifecycle) ; [This Comment from React.js Reddit on Lifecycle Methods](https://www.reddit.com/r/reactjs/comments/d4r6fu/react_lifecycle_methods) ; [Lifecycle Methods and Hooks](https://www.opcito.com/blogs/lifecycle-methods-and-hooks-in-react) ; [Lifecycle Methods and Hooks Suspense](https://dmitripavlutin.com/react-fetch-lifecycle-methods-hooks-suspense) ; [Hooks Fundamentals](https://www.freecodecamp.org/news/react-hooks-fundamentals) ; [Component Lifecycle Methods vs Hooks](https://tsh.io/blog/react-component-lifecycle-methods-vs-hooks) ; [Replacing Lifecycle Methods with Hooks](https://blog.bitsrc.io/replacing-react-lifecycle-methods-with-hooks-a-comprehensive-guide-dfd5cbe1f274)
 
 ### 4. Design the perfect door - what should it look like, what are the components for it? What design heuristics should it follow, and how does your design match? What made you choose this design? (20 marks). (Consider in particular (likely need to do independent learning): who are your stakeholders? What are their personas? What are the doors requirements and how will your stakeholders benefit from your solution?)
 
@@ -121,7 +121,7 @@ I don’t think I’ll ever write any how to use documentation for a door :) eve
 
 So my door meets all the heuristics (maybe save for the 10th one?), yay :) That surely means it’s a good door, right?
 
-Reading materials perused before formulating this answer: only got the [list of 10 heuristics](https://www.nngroup.com/articles/ten-usability-heuristics/) from the internet.
+Reading materials perused before formulating this answer: only got the [list of 10 heuristics](https://www.nngroup.com/articles/ten-usability-heuristics) from the internet.
 
 ### 5. What is Angular, and how does it differ from React? You may need to conduct independent research and learning for this (10 marks)
 
@@ -156,24 +156,24 @@ Its possible minuses are that it’s too new and thus underdeveloped, too lightw
 ##### Comparison – Angular vs React & Vue – 2way & 1way Data Binding:
 Important side note about Angular & React: it is often mentioned that “Angular employs 2 way data binding” and “React employs 1 way data binding”, which means that in 2way binding if the UI is changed then the model state changes automatically, and the reverse is also true, while in 1way flow changing the UI elements is possible only after changing the model state. I did read that Angular’s way leads to less errors but in practice in code I don’t yet understand what this means. It was also mentioned clearly that 2way binding of Angular necessitates “dirty checking” and makes the flow slower. 
 I also read about Flux in React as the means for Facebook to implement the 1-directional approach:
-![1-way Data Binding React Data Flow](/flux-data-flow.png)
+![1-way Data Binding React Data Flow](flux-data-flow.png)
 
 ##### Comparison – in a table, side by side detailed comparison view:
 
-![Angular vs React.js vs Vue.js Comparison](/comparison.PNG)
+![Angular vs React.js vs Vue.js Comparison](comparison.PNG)
 
-Reading materials perused before formulating this answer: [React.js vs Angulrar 5 vs Vue.js in 2018](https://medium.com/techmagic/reactjs-vs-angular5-vs-vue-js-what-to-choose-in-2018-b91e028fa91d) ; [React.js vs Angular](https://appinventiv.com/blog/react-vs-angular) ; [Differences Between React and Angular]( https://dzone.com/articles/differences-between-react-and-angular) ; [React vs Angular](https://x-team.com/blog/react-vs-angular) ; [Vue.js](https://vuejs.org) ; [Why Use Vue.js](https://www.trio.dev/blog/why-use-vue-js) ; [Vue.js Comparison with Angular and React](https://www.valuecoders.com/blog/technology-and-apps/vue-js-comparison-angular-react) ; [React vs Angular.js](https://rubygarage.org/blog/react-vs-angularjs) ; [Angular vs React Comparison](https://brainhub.eu/library/angular-vs-react-comparison) ; [React vs Angular](https://www.sitepoint.com/react-vs-angular) ; [React vs Angular vs Vue Complete Comparison](https://dzone.com/articles/react-vs-angular-vs-vue-the-complete-comparison-to) ; [Angular vs React Side by Side Comparison](https://www.pluralsight.com/guides/angular-vs-react-a-side-by-side-comparison) ; [React vs Angular](https://programmingwithmosh.com/react/react-vs-angular) ; [React.js vs Angular.js](https://www.rishabhsoft.com/blog/reactjs-vs-angularjs) ; [React vs Vue](https://hackr.io/blog/react-vs-vue )
+Reading materials perused before formulating this answer: [React.js vs Angulrar 5 vs Vue.js in 2018](https://medium.com/techmagic/reactjs-vs-angular5-vs-vue-js-what-to-choose-in-2018-b91e028fa91d) ; [React.js vs Angular](https://appinventiv.com/blog/react-vs-angular) ; [Differences Between React and Angular](https://dzone.com/articles/differences-between-react-and-angular) ; [React vs Angular](https://x-team.com/blog/react-vs-angular) ; [Vue.js](https://vuejs.org) ; [Why Use Vue.js](https://www.trio.dev/blog/why-use-vue-js) ; [Vue.js Comparison with Angular and React](https://www.valuecoders.com/blog/technology-and-apps/vue-js-comparison-angular-react) ; [React vs Angular.js](https://rubygarage.org/blog/react-vs-angularjs) ; [Angular vs React Comparison](https://brainhub.eu/library/angular-vs-react-comparison) ; [React vs Angular](https://www.sitepoint.com/react-vs-angular) ; [React vs Angular vs Vue Complete Comparison](https://dzone.com/articles/react-vs-angular-vs-vue-the-complete-comparison-to) ; [Angular vs React Side by Side Comparison](https://www.pluralsight.com/guides/angular-vs-react-a-side-by-side-comparison) ; [React vs Angular](https://programmingwithmosh.com/react/react-vs-angular) ; [React.js vs Angular.js](https://www.rishabhsoft.com/blog/reactjs-vs-angularjs) ; [React vs Vue](https://hackr.io/blog/react-vs-vue)
 
 ### 6. Please describe Redux in as much detail – especially consider: why would someone use it? What is it? What's the benefit of using it? Are there any potential drawbacks to using it? How can it be added to a project? What is dispatch, provider, actions, etc? (15 marks)
 
 ##### What is Redux?
 Redux is a library which is a state container, meaning it manages and updates the states of components in the application using actions (events). It systematises the way states are being updated by defining when, where, why, and how the state in your application is being updated, and how the application logic will behave when those changes occur. While Redux can be used with any UI framework or library, it’s mostly used with React. React uses Redux in to cut down (delegate and facilitate) the hassle of storing and managing component states which is especially useful in large-sized and complex applications with a lot / big dynamic elements. The globally managed states of app elements are stored in a “store” which can be accessed using a “provider” – a component thanks to which components gain the ability to access (dispatch, so send state / state updates to the store, or fetch, so receive the states from the store) the states stored in the “store” using a “connect” function. According to several sources, that’s literally the only thing the provider does, it just grants components the ability to access the “store”. Any component wrapped in the “provider” can access the “store” via connect function and get the “store” passed down as an attribute (or list of attributes), but needs to be wrapped with the provider - the access to the global store is granted also to their child components, that’s why a provider with only 1 element inside, <App /> works fine – it means all components of this application can access the global state store:
 
-![This is how one wraps components with a provider](/provider.png)
+![This is how one wraps components with a provider](provider.png)
 
 The global “store” with easily (clearly) defined access point (provider) is useful as it simplifies the way in which components can submit and retrieve states, which also means that the components wrapped in the provider so granted the access to the store can access other components’ states because all the components listed inside the provider (wrapped in it) use the global store – this means the states of all these components are stored in the global store, so any component with access to that store can access not only its own but all the data that’s stored in the store, other components’ states as well. This simplifies the process of “exchanging” state information between the components. This renders passing the state properties to other components obsolete.
 
-![Data Flow in Redux: Components, Actions, Store, Provider, Reducer](/redux-data-flow.png)
+![Data Flow in Redux: Components, Actions, Store, Provider, Reducer](redux-data-flow.png)
 
 There should be only 1 store for the whole app, it’s global anyway, so it’d be unnecessarily complicating things to make more than 1 store.
 
@@ -182,7 +182,7 @@ As per the “why would someone use it”, as said, it’s particularly useful f
 However, that said, since it neatly delegates the state management and greatly facilitates the process, it might be useful even for applications with a simple log in functionality, so that the logged in state and logged out state are properly reflected and easily managed. I could understand the benefit of Redux supported login reflected on a NavBar for example, showing different links after login. During class the shopping cart example as also very clear on why using Redux could be beneficial.
 Alternative to delegating state management to the Redux’ global store is managing all dependencies and state updates basically manually so that’s a pretty big incentive.
 
-![Redux' Global State Store](/redux-state-global-store.PNG)
+![Redux' Global State Store](redux-state-global-store.PNG)
 
 ##### What are actions, dispatch, provider etc?
 Short answer: this is how Redux manages the state updates (sending, validating a request, updating the store, retrieving the state info from the store).
@@ -255,7 +255,7 @@ Reading materials perused before formulating this answer: [Wikipedia: GNU](https
 
 While I come from OOP background and sense I might have a bias, as OOP uses classes so I was familiar with this concept, and React has class based components at first I kind of favored them, as much as I’d love to say “It’s not like one is better than the other. They’re different. Both are just tools.”, after reading a lot for the sake of answering questions in this homework (not only this one), I must yield and admit that in React function based components may be often the better choice than class based components. 
 
-![Class Based Component vs Function Based Component](/class-vs-function.png)
+![Class Based Component vs Function Based Component](class-vs-function.png)
 
 ##### Function Based Component Pluses:
 1 – shorter code, easier to read. Since functional based components don’t require the render() function this 1 word/line is omitted resulting in shorter code (also no need for “this” makes the code shorter too).
@@ -280,7 +280,7 @@ So yes, it is a few lines shorter. With larger programs this must make a world o
 Basically same as the pluses :D Also the pluses of function based component are class based components' minuses. 
 Also, "wrapper hell". The reports of “wrapper hell” were a picture that’s worth more than a thousand words each time – that does indeed look like wrapper hell, so if function based components relieve the devs from this particular type of suffering, that’s a very good idea and should be supported and promoted.
 
-![Wrapper Hell](/wrapper-hell.png)
+![Wrapper Hell](wrapper-hell.png)
 
 ##### Conclusion
 From the abovementioned points it can be clearly understood that while some parts remain disputable, a preference between two things delivering same functionality anyway, one of these two comes with slight improvements of being shorter, easier to read, and arguably easier to test, and possibly even easier to use side effects on. So even if it’s 5% better, yes, it is just clearly better.
